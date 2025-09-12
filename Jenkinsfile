@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         AWS_ACCOUNT_ID = "720226180820"
-        AWS_REGION = "ap-south-1"   // change to your AWS region
+        AWS_REGION = "ap-south-1"   
         ECR_REPO = "nginx-app"
         IMAGE_TAG = "latest"
     }
