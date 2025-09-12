@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh """
                 minikube kubectl apply -f deployment.yaml
-                minikube kubectl rollout status deployment/nginx-app
+                minikube kubectl get pods 
                 """
             }
         }
