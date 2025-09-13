@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/Ritzz16/nginx-jenkins-ecr-minikube.git'
+                git branch: 'main', url: 'https://github.com/Ritzz16/nginx-jenkins-ecr-minikube.git'
             }
         }
         stage('Build Docker Image') {
