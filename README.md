@@ -38,7 +38,7 @@ prerequsite : 1.Linux 64bit
                                   roleRef:
                                     kind: ClusterRole
                                     name: cluster-admin
-                                    apiGroup: rbac.authorization.k8s.io
+                                    apiGroup: rbac.authorization.k8s.io ##
 10. Or multinode k8s cluster then create credential in jenkins give name kubeconfig ,copy the .kubeconfig file data and paste in field , then type = secret file and id =kube-config and save(recommended)
 11. Build pipeline if succesfully build ,
 12. minikube kubectl get pods (check pods running)
