@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy to Minikube') {
             steps {
                 sh """
-                minikube kubectl apply -f deployment.yaml
+                minikube kubectl --apply -f deployment.yaml
                 minikube kubectl get pods 
                 """
             }
