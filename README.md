@@ -20,7 +20,7 @@ prerequsite : 1.Linux 64bit
 7. On K8S side add the add the .kubeconfig file to the jenkins users directory, in my case im using minikube (" sudo cp -r /home/riteshh/.minikube/* /var/lib/jenkins/.minikube/") 
 8. make jenkins user owner of that file (" sudo chown -R jenkins:jenkins /var/lib/jenkins/.minikube")
 9. if you are using minikube then create the clusterrolebinding and svc accouny for jenkins user to give admin access
-                                 ---
+                               #  ---
                                   apiVersion: v1
                                   kind: ServiceAccount
                                   metadata:
