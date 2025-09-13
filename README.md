@@ -19,26 +19,7 @@ prerequsite : 1.Linux 64bit
 6. Add the jenkins user into docker group on linux (" sudo usermod -aG docker jenkins ")
 7. On K8S side add the add the .kubeconfig file to the jenkins users directory, in my case im using minikube (" sudo cp -r /home/riteshh/.minikube/* /var/lib/jenkins/.minikube/") 
 8. make jenkins user owner of that file (" sudo chown -R jenkins:jenkins /var/lib/jenkins/.minikube")
-9. if you are using minikube then create the clusterrolebinding and svc accouny for jenkins user to give admin access
-                               ##  ---
-                                  apiVersion: v1
-                                  kind: ServiceAccount
-                                  metadata:
-                                    name: jenkins-admin
-                                    namespace: default
-                                  ---
-                                  apiVersion: rbac.authorization.k8s.io/v1
-                                  kind: ClusterRoleBinding
-                                  metadata:
-                                    name: jenkins-admin-binding
-                                  subjects:
-                                  - kind: ServiceAccount
-                                    name: jenkins-admin
-                                    namespace: default
-                                  roleRef:
-                                    kind: ClusterRole
-                                    name: cluster-admin
-                                    apiGroup: rbac.authorization.k8s.io ##
+9. if you are using minikube then create the clusterrolebinding and svc accouny for jenkins user to give admin access (jenkins-rbac.yaml) (only for minikube ) (optional)
 10. Or multinode k8s cluster then create credential in jenkins give name kubeconfig ,copy the .kubeconfig file data and paste in field , then type = secret file and id =kube-config and save(recommended)
 11. Build pipeline if succesfully build ,
 12. minikube kubectl get pods (check pods running)
