@@ -15,15 +15,15 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh """
-                aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 720226180820.dkr.ecr.ap-south-1.amazonaws.com
+                aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/d7z7x8e8
                 docker build -t nginx-app .
-                docker tag nginx-app:latest 720226180820.dkr.ecr.ap-south-1.amazonaws.com/nginx-app:latest
+                docker tag nginx-app:latest public.ecr.aws/d7z7x8e8/nginx-app:latest
                 """
             }
         }
         stage('Push Image to ECR') {
             steps {
-                sh "docker push 720226180820.dkr.ecr.ap-south-1.amazonaws.com/nginx-app:latest"
+                sh "docker push public.ecr.aws/d7z7x8e8/nginx-app:latest"
             }
         }
         stage('Deploy to Minikube') {
